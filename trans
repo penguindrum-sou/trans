@@ -39,8 +39,7 @@ def trans_word(word, from, to)
 	https.start {
 	  response = https.get('/language/translate/v2?key=AIzaSyBCFuxk01XH39Tcw2C_7hUXlbFYmZ1hYjc&q=' + word  + '&source=' + from  +  '&target=' + to)
 	  result = JSON.parse(response.body)
-	  str =  result['data']['translations']
-	  puts str[0]['translatedText']
+	  puts result['data']['translations'][0]['translatedText']
 	  puts ''
 	}
 end
