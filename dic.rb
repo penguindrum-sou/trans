@@ -21,7 +21,7 @@ class Dic < Thor
 		puts '	ej	english -> japanese'
 		puts '	trans  translation by google api'
 		puts ''
-		puts 'optsions :'
+		puts 'options :'
 		puts '	--je  your japanese sentence translation to english sentence by google api'
 		puts '	--ej  your english sentence translation to japanese sentence by google api'
 		puts ''
@@ -97,12 +97,20 @@ def trans_word(word, from, to)
 	https.verify_mode = OpenSSL::SSL::VERIFY_NONE
 	https.verify_depth = 5
 
+	puts '------------------------------------------------------------------------------------------------------------------------------------------'
+	printf('%25s' + '%8s' + '%-75s', from, ' ', to)
+	puts ''
+	puts '------------------------------------------------------------------------------------------------------------------------------------------'
+
 	https.start {
 	  response = https.get('/language/translate/v2?key=AIzaSyBCFuxk01XH39Tcw2C_7hUXlbFYmZ1hYjc&q=' + word  + '&source=' + from  +  '&target=' + to)
 	  result = JSON.parse(response.body)
-	  puts result['data']['translations'][0]['translatedText']
+	  printf('%25s' + '%8s' + '%-75s', word, ' ', result['data']['translations'][0]['translatedText'] );
+
+	  # puts result['data']['translations'][0]['translatedText']
 	  puts ''
 	}
+	puts '------------------------------------------------------------------------------------------------------------------------------------------'
 end
 
 Dic.start
