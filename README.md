@@ -21,7 +21,7 @@
 		chmod +x dic
 3. シンボリックリンクを作成
 
-		sudo ln -s /絶対パス/trans /usr/bin/dic
+		sudo ln -s /絶対パス/dic /usr/bin/dic
 		
 ### コマンドの使い方
 #### 和英辞典
